@@ -4,6 +4,7 @@ import { toast } from 'sonner'
 import ErrorMessage from '../components/ErrorMessage'
 import { ProfileForm, User } from '../types'
 import { updateProfile, uploadImage } from '../api/DevTreeAPI'
+import ButtonModel from '../components/ButtonModel1'
 
 export default function ProfileView() {
     const queryClient = useQueryClient()
@@ -58,7 +59,7 @@ export default function ProfileView() {
             className="bg-white p-10 rounded-lg space-y-5"
             onSubmit={handleSubmit(handleUserProfileForm)}
         >
-            <legend className="text-2xl text-slate-800 text-center">Editar Información</legend>
+            <legend className="text-2xl text-violet-700 font-bold text-center">Editar Información</legend>
             <div className="grid grid-cols-1 gap-2">
                 <label
                     htmlFor="handle"
@@ -104,11 +105,15 @@ export default function ProfileView() {
                 />
             </div>
 
+            <ButtonModel content={"Guardar Cambios"} />
+
+            {/*}
             <input
                 type="submit"
                 className="bg-cyan-400 p-2 text-lg w-full uppercase text-slate-600 rounded-lg font-bold cursor-pointer"
                 value='Guardar Cambios'
             />
+            {*/}
         </form>
     )
 }

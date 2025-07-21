@@ -9,7 +9,7 @@ export default function AdminNavigation() {
     }
     return (
         <button
-            className=" bg-lime-500 p-2 text-slate-800 uppercase font-black text-xs rounded-lg cursor-pointer"
+            className=" bg-violet-600 text-white hover:bg-violet-400 hover:text-violet-800 p-2  uppercase font-black text-xs rounded-lg cursor-pointer"
             onClick={logout}
         >
             Cerrar Sesión

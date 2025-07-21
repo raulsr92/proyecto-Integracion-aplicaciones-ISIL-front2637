@@ -1,14 +1,22 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
+import { set, useForm } from 'react-hook-form'
 import { isAxiosError } from 'axios'
 import { toast } from 'sonner'
 import type { RegisterForm } from '../types'
 import ErrorMessage from '../components/ErrorMessage'
 import api from '../config/axios'
 
+/*import useState from React at the top of the file*/
+import { useState } from 'react';
+
+import ButtonModel1 from '../components/ButtonModel1'
+
 export default function RegisterView() {
     const location = useLocation()
     const navigate = useNavigate()
+
+    const[tipoInput, setTipoInput] = useState(true)
+
     const initialValues : RegisterForm = {
         name: '',
         email: '',
@@ -35,13 +43,25 @@ export default function RegisterView() {
     }
 
 
+    function cambiarTipo(): void {
+       if (tipoInput===false) {
+            setTipoInput(true)
+
+       } else{
+            setTipoInput(false)
+       }
+    }
+
     return (
         <>
-            <h1 className='text-4xl text-white font-bold'>Crear Cuenta</h1>
+            <h1 className='text-4xl text-yellow-200 font-bold'>Crear Cuenta</h1>
 
             <form
                 onSubmit={handleSubmit(handleRegister)}
                 className="bg-white px-5 py-20 rounded-lg space-y-10 mt-10"
+                style={{
+                    boxShadow: "0px 0px 40px 2px #7008e7"
+                    }}
             >
                 <div className="grid grid-cols-1 space-y-3">
                     <label htmlFor="name" className="text-2xl text-slate-500">Nombre</label>
@@ -86,12 +106,15 @@ export default function RegisterView() {
                     />
                     {errors.handle && <ErrorMessage>{errors.handle.message}</ErrorMessage>}
                 </div>
-                <div className="grid grid-cols-1 space-y-3">
+                <div className="grid grid-cols-1 space-y-3" 
+                style={{
+                    position: "relative"
+                }}>
                     <label htmlFor="password" className="text-2xl text-slate-500">Password</label>
                     <input
                         id="password"
-                        type="password"
                         placeholder="Password de Registro"
+                        type={tipoInput?"password":"text"}
                         className="bg-slate-100 border-none p-3 rounded-lg placeholder-slate-400"
                         {...register('password', {
                             required: "El Password es obligatorio",
@@ -102,6 +125,21 @@ export default function RegisterView() {
                         })}
                     />
                     {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
+                    <a className='eyeContent' 
+                    style={{
+                        position: "absolute",
+                        right: "10px",
+                        bottom: "12px",
+                        cursor: "pointer"
+                    }}
+                    onClick={cambiarTipo}
+                    >
+                        <i className={tipoInput?"fa-solid fa-eye":"fa-solid fa-eye-slash"}
+                        style={{
+                            color: "#6d28d9"
+                        }}></i>
+                    </a>
+
                 </div>
 
                 <div className="grid grid-cols-1 space-y-3">
@@ -120,18 +158,22 @@ export default function RegisterView() {
                     {errors.password_confirmation && <ErrorMessage>{errors.password_confirmation.message}</ErrorMessage>}
                 </div>
 
+                <ButtonModel1 content={"Crear Cuenta"} />
+
+                {/*            
                 <input
                     type="submit"
                     className="bg-cyan-400 p-3 text-lg w-full uppercase text-slate-600 rounded-lg font-bold cursor-pointer"
                     value='Crear Cuenta'
                 />
+                */ }
             </form>
 
             <nav className='mt-10'>
                 <Link
                     className='text-center text-white text-lg block'
                     to="/auth/login"
-                >¿Ya tienes una cuenta? Inicia Sesión</Link>
+                >¿Ya tienes una cuenta? <span className='text-amber-200'> Inicia Sesión</span></Link>
             </nav>
         </>
     )

@@ -4,6 +4,7 @@ import { useMutation } from '@tanstack/react-query'
 import ErrorMessage from "./ErrorMessage";
 import { searchByHandle } from '../api/DevTreeAPI';
 import { Link } from 'react-router-dom';
+import ButtonModel1 from './ButtonModel1';
 
 export default function SearchForm() {
 
@@ -56,11 +57,15 @@ export default function SearchForm() {
                 </p>}
             </div>
 
+            {/*}
             <input
                 type="submit"
                 className="bg-cyan-400 p-3 text-lg w-full uppercase text-slate-600 rounded-lg font-bold cursor-pointer"
                 value='Obtener mi DevTree'
             />
+            {*/}
+            <ButtonModel1 content={"Obtener mi DevTree"} />
+
         </form>
     )
 }

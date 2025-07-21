@@ -47,13 +47,18 @@ export default function DevTree({ data }: DevTreeProps) {
         <>
             <Header />
             
-            <div className="bg-gray-100  min-h-screen py-10">
+            <div className="bg-yellow-100 min-h-screen py-10" style={{
+            backgroundImage: 'url("/img/bg14.jpg")',
+            backgroundPosition: "center center",
+            backgroundRepeat:"no-repeat",
+            backgroundSize: "cover"
+          }}>
                 <main className="mx-auto max-w-5xl p-10 md:p-0">
                     <NavigationTabs />
 
                     <div className="flex justify-end">
                         <Link
-                            className="font-bold text-right text-slate-800 text-2xl"
+                            className="font-bold text-right text-purple-600 text-2xl"
                             to={`/${data.handle}`}
                             target="_blank"
                             rel="noreferrer noopener"
@@ -64,7 +69,7 @@ export default function DevTree({ data }: DevTreeProps) {
                         <div className="flex-1 ">
                             <Outlet />
                         </div>
-                        <div className="w-full md:w-96 bg-slate-800 px-5 py-10 space-y-6">
+                        <div className="w-full md:w-96 bg-violet-700 rounded-xl border-white border-2 px-5 py-10 space-y-6">
                             <p className='text-4xl text-center text-white'>{data.handle}</p>
 
                             {data.image &&

@@ -11,7 +11,7 @@ type DevTreeInputProps = {
 export default function DevTreeInput({ item, handleUrlChange, handleEnableLink }: DevTreeInputProps) {
 
     return (
-        <div className="bg-white shadow-sm p-5 flex items-center gap-3">
+        <div className="bg-violet-200 rounded-xl shadow-sm p-5 flex items-center gap-3">
             <div
                 className="w-12 h-12 bg-cover"
                 style={{ backgroundImage: `url('/social/icon_${item.name}.svg')` }}
@@ -30,7 +30,7 @@ export default function DevTreeInput({ item, handleUrlChange, handleEnableLink }
                 name={item.name}
                 onChange={() => handleEnableLink(item.name)}
                 className={classNames(
-                    item.enabled ? 'bg-blue-500' : 'bg-gray-200',
+                    item.enabled ? 'bg-violet-600' : 'bg-gray-200',
                     'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
                 )}
             >
