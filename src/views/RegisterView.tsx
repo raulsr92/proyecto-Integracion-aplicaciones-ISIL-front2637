@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { set, useForm } from 'react-hook-form'
+import {  useForm } from 'react-hook-form'
 import { isAxiosError } from 'axios'
 import { toast } from 'sonner'
 import type { RegisterForm } from '../types'
